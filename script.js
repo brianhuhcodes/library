@@ -55,6 +55,7 @@ function addBookToLibrary(a, b, c, d) {
     let obj = new Book(a, b, c, d)
     myLibrary.push(obj)
     valueReset()
+    removeExistingDiv()
     createFromInput()
     //return myLibrary
   // do stuff here
@@ -67,6 +68,10 @@ function addBookToLibrary(a, b, c, d) {
 
 const libGen = document.querySelector('.library-generated')
 
+
+function removeExistingDiv() {
+  document.querySelectorAll("div.added").forEach(function(added) {libGen.removeChild(added)})
+}
 
 
 
@@ -99,6 +104,7 @@ for (let i=0; i<myLibrary.length; i++) {
 }
 
 
+createFromInput() //initial run of the myLibrary array
 
 
 
