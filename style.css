@@ -1,0 +1,44 @@
+body {
+    margin: auto;
+    background-color:blanchedalmond;
+}
+.userentry {
+    width: 300px;
+    /* display: inline-block; */
+}
+
+.library {
+    padding: 30px 30px;
+
+}
+.library-inner {
+    max-width: 900px;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 45px;
+    margin: 0 auto;
+    border-style: groove;
+    padding: 20px;
+}
+
+.library-generated {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 45px;
+    margin: 0 auto;
+
+}
+
+.test {
+    background-color: aquamarine;
+    padding: 20px 20px;
+    margin: 0 10px;
+}
+
+.added {
+    background-color: aquamarine;
+    padding: 20px 20px;
+    margin: 0 10px;
+}
