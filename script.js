@@ -4,10 +4,12 @@ const button = document.querySelector('#submit')
 const authorinput = document.querySelector('input[name="author"]')
 const titleinput = document.querySelector('input[name="title"]')
 const pageinput = document.querySelector('input[name="page"]')
-const readinput = document.querySelector('input[name="read"]')
-const notreadinput = document.querySelector('input[name="notread"]')
+//const readinput = document.querySelector('input[name="read"]')
+//const readinput2 = document.querySelectorAll('input[name="read"]').forEach(function(read) {if (read.checked) {return read}})///????????
 
 button.addEventListener("click", (e) => {
+  const readinput = document.querySelector('input[name="read"]:checked')
+
   addBookToLibrary(authorinput.value, titleinput.value, pageinput.value, readinput.value)
   e.preventDefault();
 }
@@ -20,13 +22,13 @@ let myLibrary = [
       author: 'J.R.R. Tolkien',
       title: 'The Hobbit',
       page: '295 pages',
-      read: 'not read yet'
+      read: 'No'
     },
     {
       author: 'John Steinbeck',
       title: 'Cannery Row',
       page: '181 pages',
-      read: 'not read yet'
+      read: 'No'
     }
 ];
 
@@ -48,7 +50,9 @@ function valueReset() {
   authorinput.value = ""
   titleinput.value = ""
   pageinput.value = ""
-  readinput.value = ""
+  document.getElementById('yes').checked = false
+  document.getElementById('no').checked = false
+
 }
 
 function addBookToLibrary(a, b, c, d) {
@@ -108,10 +112,9 @@ createFromInput() //initial run of the myLibrary array
 
 
 
+//to do list
+//now figure out option to choose only between read or not read
+//add an option to change an existing array.read status
+//connect it to a local or cloud storage
 
 
-
-// console.log(myLibrary)
-
-
-// console.table(myLibrary)
