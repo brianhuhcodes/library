@@ -118,7 +118,6 @@ function createFromInput() {
   const changeTheStatus = changes.forEach((change) => {
     change.addEventListener('click', function() {
       let searchStr = this.parentNode.childNodes[1].textContent.slice(7,this.parentNode.childNodes[1].textContent.length)
-      console.log('is it working?')
       for (let i = 0; i < myLibrary.length; i++) {
         if (myLibrary[i].title == searchStr) {
             if (myLibrary[i].read == "Yes") {
@@ -133,12 +132,9 @@ function createFromInput() {
 
           
         }
-        console.log("inside the for loop")
       }
       removeExistingDiv()
-      console.log("after the remove Existing Div()")
       createFromInput()
-      console.log("after createFromInput()")
     
   }
   )})
@@ -179,4 +175,5 @@ createFromInput() //initial run of the myLibrary array
 //to do list
 //add an option to change an existing array.read status
 //connect it to a local or cloud storage
+
 
