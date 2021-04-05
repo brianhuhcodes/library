@@ -78,38 +78,92 @@ function removeExistingDiv() {
 
 
 function createFromInput() {
-for (let i=0; i<myLibrary.length; i++) {
-  const added = document.createElement('div')
-  const author = document.createElement('div')
-  const title = document.createElement('div')
-  const page = document.createElement('div')
-  const read = document.createElement('div')
-  const change = document.createElement('button')
-  const del = document.createElement('button')
+  for (let i=0; i<myLibrary.length; i++) {
+    const added = document.createElement('div')
+    const author = document.createElement('div')
+    const title = document.createElement('div')
+    const page = document.createElement('div')
+    const read = document.createElement('div')
+    const change = document.createElement('button')
+    const del = document.createElement('button')
 
-  added.classList.add('added')
-  author.classList.add('author')
-  title.classList.add('title')
-  page.classList.add('page')
-  read.classList.add('read')
-  change.classList.add('change')
-  del.classList.add('del')
+    added.classList.add('added')
+    author.classList.add('author')
+    title.classList.add('title')
+    page.classList.add('page')
+    read.classList.add('read')
+    change.classList.add('change')
+    del.classList.add('del')
+    
+    author.textContent += `Author: ${myLibrary[i].author}`
+    title.textContent += `Title: ${myLibrary[i].title}`
+    page.textContent += `Page: ${myLibrary[i].page}`
+    read.textContent += `Read?: ${myLibrary[i].read}`
+    change.textContent += `Switch the read status`
+    del.textContent += `Delete`
+    libGen.appendChild(added)
+    added.appendChild(author)
+    added.appendChild(title)
+    added.appendChild(page)
+    added.appendChild(read)
+    added.appendChild(change)
+    added.appendChild(del)
+    
+
+  }
   
-  author.textContent += `Author: ${myLibrary[i].author}`
-  title.textContent += `Title: ${myLibrary[i].title}`
-  page.textContent += `Page: ${myLibrary[i].page}`
-  read.textContent += `Read?: ${myLibrary[i].read}`
-  change.textContent += `Switch the read status`
-  del.textContent += `Delete`
-  libGen.appendChild(added)
-  added.appendChild(author)
-  added.appendChild(title)
-  added.appendChild(page)
-  added.appendChild(read)
-  added.appendChild(change)
-  added.appendChild(del)
+  const dels = document.querySelectorAll('.del')
+  const changes = document.querySelectorAll('.change')
+  
+  const changeTheStatus = changes.forEach((change) => {
+    change.addEventListener('click', function() {
+      let searchStr = this.parentNode.childNodes[1].textContent.slice(7,this.parentNode.childNodes[1].textContent.length)
+      console.log('is it working?')
+      for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title == searchStr) {
+            if (myLibrary[i].read == "Yes") {
+              myLibrary[i].read = "No"
+              
+            }
+            else if (myLibrary[i].read == "No") {
+              myLibrary[i].read = "Yes"
+              
+            }
+            
 
-}
+          
+        }
+        console.log("inside the for loop")
+      }
+      removeExistingDiv()
+      console.log("after the remove Existing Div()")
+      createFromInput()
+      console.log("after createFromInput()")
+    
+  }
+  )})
+
+
+  
+dels.forEach((del) => {
+  del.addEventListener('click', function(e) {
+    //e.target.parentNode.remove()
+    let searchStr = this.parentNode.childNodes[1].textContent.slice(7,this.parentNode.childNodes[1].textContent.length)
+    for (let i = 0; i < myLibrary.length; i++) {
+      if (myLibrary[i].title == searchStr) {
+          myLibrary.splice(i,1)
+          
+      }
+  
+    }
+    removeExistingDiv()
+    createFromInput()
+  
+  })
+  })
+  
+
+
 }
 
 
@@ -117,16 +171,12 @@ createFromInput() //initial run of the myLibrary array
 
 
 
-const dels = document.querySelectorAll('.del')
-const changes = document.querySelectorAll('.change')
 
 
-dels.forEach((del) => {
-del.addEventListener('click', function(e) {e.target.parentNode.remove()})
-})
+
+
 
 //to do list
 //add an option to change an existing array.read status
 //connect it to a local or cloud storage
-
 
