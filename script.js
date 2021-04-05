@@ -4,8 +4,6 @@ const button = document.querySelector('#submit')
 const authorinput = document.querySelector('input[name="author"]')
 const titleinput = document.querySelector('input[name="title"]')
 const pageinput = document.querySelector('input[name="page"]')
-//const readinput = document.querySelector('input[name="read"]')
-//const readinput2 = document.querySelectorAll('input[name="read"]').forEach(function(read) {if (read.checked) {return read}})///????????
 
 button.addEventListener("click", (e) => {
   const readinput = document.querySelector('input[name="read"]:checked')
@@ -67,7 +65,6 @@ function addBookToLibrary(a, b, c, d) {
 
 
 //addBookToLibrary("a", "b", 'c', 'd')
-// addBookToLibrary(q,w,e,r)
 
 
 const libGen = document.querySelector('.library-generated')
@@ -87,22 +84,30 @@ for (let i=0; i<myLibrary.length; i++) {
   const title = document.createElement('div')
   const page = document.createElement('div')
   const read = document.createElement('div')
+  const change = document.createElement('button')
+  const del = document.createElement('button')
 
   added.classList.add('added')
   author.classList.add('author')
   title.classList.add('title')
   page.classList.add('page')
   read.classList.add('read')
+  change.classList.add('change')
+  del.classList.add('del')
   
   author.textContent += `Author: ${myLibrary[i].author}`
   title.textContent += `Title: ${myLibrary[i].title}`
   page.textContent += `Page: ${myLibrary[i].page}`
-  read.textContent += `Read: ${myLibrary[i].read}`
+  read.textContent += `Read?: ${myLibrary[i].read}`
+  change.textContent += `Switch the read status`
+  del.textContent += `Delete`
   libGen.appendChild(added)
   added.appendChild(author)
   added.appendChild(title)
   added.appendChild(page)
   added.appendChild(read)
+  added.appendChild(change)
+  added.appendChild(del)
 
 }
 }
@@ -112,8 +117,15 @@ createFromInput() //initial run of the myLibrary array
 
 
 
+const dels = document.querySelectorAll('.del')
+const changes = document.querySelectorAll('.change')
+
+
+dels.forEach((del) => {
+del.addEventListener('click', function(e) {e.target.parentNode.remove()})
+})
+
 //to do list
-//now figure out option to choose only between read or not read
 //add an option to change an existing array.read status
 //connect it to a local or cloud storage
 
