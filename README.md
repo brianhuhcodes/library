@@ -4,6 +4,6 @@ A simple version of Goodreads. Books can be added or deleted. Also read status c
 
 The live site can be accessed [here(https://brianhuhcodes.github.io/library/) (https://brianhuhcodes.github.io/library/)
 
-Learning goal
+## Learning goal
 * Arrays
 * DOM
